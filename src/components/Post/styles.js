@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 600px;
+  width: 650px;
   display: flex;
   flex-direction: column;
-  margin: 90px 0;
+  margin-bottom: 90px;
 `
 
 export const Image = styled.img`

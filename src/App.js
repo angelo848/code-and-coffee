@@ -1,7 +1,7 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
-import Route from './routes'
+import Routes from './routes'
 import Navbar from './components/Navbar'
 
 const GlobalStyle = createGlobalStyle`
@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
   body, html {
-    background: #eee;
+    background: #eed;
     font-family: 'Roboto', sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Route />
+      <Routes />
       <GlobalStyle />
     </div>
   )

@@ -1,6 +1,13 @@
 import React from 'react'
 
-import { Container, Image, Title, PostMeta, Description, Button } from './style'
+import {
+  Container,
+  Image,
+  Title,
+  PostMeta,
+  Description,
+  Button
+} from './styles'
 import Thumb from '../../assets/img/post.png'
 
 const Post = () => (

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, Description } from './style'
+import { Container, Description } from './styles'
 
 const Header = () => (
   <Container>
