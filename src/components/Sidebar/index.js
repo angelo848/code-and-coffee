@@ -63,7 +63,7 @@ export default class Sidebar extends Component {
           <h4>Assine nossa Newsletter</h4>
           <input type="email" name="email" placeholder="Seu melhor e-mail" />
           <button type="submit">
-            Assinar <FontAwesomeIcon icon={faEnvelopeOpen}></FontAwesomeIcon>
+            Assinar <FontAwesomeIcon icon={faEnvelopeOpen} />
           </button>
         </Newsletter>
       </Aside>

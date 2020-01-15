@@ -1,19 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Logo from '../../assets/img/logo.png'
-import { Nav, LogoWrapper, Image, Link } from './styles.js'
+import { Nav, LogoWrapper, Image } from './styles.js'
 
-const Navbar = () => (
-  <Nav>
-    <LogoWrapper href="/">
-      <Image src={Logo} alt="logo" />
-    </LogoWrapper>
-    <div className="menu">
-      <Link href="/">Home</Link>
-      <Link href="/sobre">Escreva para nós</Link>
-      <Link href="/login">Login</Link>
-    </div>
-  </Nav>
-)
-
-export default Navbar
+export default function() {
+  return (
+    <Nav>
+      <LogoWrapper href="/">
+        <Image src={Logo} alt="logo" />
+      </LogoWrapper>
+      <div className="menu">
+        <Link className="link" to="/">
+          Home
+        </Link>
+        <Link className="link" to="/sobre">
+          Escreva para nós
+        </Link>
+        <Link className="link" to="/login">
+          Login
+        </Link>
+      </div>
+    </Nav>
+  )
+}
