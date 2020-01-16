@@ -2,7 +2,6 @@ import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
 import Routes from './routes'
-import Navbar from './components/Navbar'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Routes />
       <GlobalStyle />
     </div>

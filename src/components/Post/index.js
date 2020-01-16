@@ -30,7 +30,13 @@ const Post = () => (
       error! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos,
       minus ipsum aspernatur facere blanditiis tenetur quas vitae ducimus
       cupiditate iure, necessitatibus nam, molestiae in repudiandae nisi quod
-      aliquid est error!
+      aliquid est error! Lorem ipsum dolor sit amet consectetur, adipisicing
+      elit. Quos, minus ipsum aspernatur facere blanditiis tenetur quas vitae
+      ducimus cupiditate iure, necessitatibus nam, molestiae in repudiandae nisi
+      quod aliquid est error! Lorem ipsum dolor sit amet consectetur,
+      adipisicing elit. Quos, minus ipsum aspernatur facere blanditiis tenetur
+      quas vitae ducimus cupiditate iure, necessitatibus nam, molestiae in
+      repudiandae nisi quod aliquid est error!
     </Description>
     <Button href="/post">Continuar lendo</Button>
   </Container>
