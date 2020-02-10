@@ -6,6 +6,7 @@ import {
   faUser,
   faLock
 } from '@fortawesome/free-solid-svg-icons'
+import Navbar from '../../components/Navbar'
 
 import { Container, Title, SignButtons, Field, Button } from './styles'
 
@@ -38,6 +39,7 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault()
+
     if (login) {
       console.log('Logou')
     } else {
@@ -47,6 +49,7 @@ export default function Login() {
 
   return (
     <>
+      <Navbar />
       {login ? <Title>Entrar</Title> : <Title>Cadastrar</Title>}
       <Container>
         <SignButtons>

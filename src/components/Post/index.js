@@ -8,14 +8,13 @@ import {
   Description,
   Button
 } from './styles'
-import Thumb from '../../assets/img/post.png'
 
-const Post = () => (
+const Post = props => (
   <Container>
     <a href="/post">
-      <Image src={Thumb}></Image>
+      <Image src={props.thumb}></Image>
     </a>
-    <Title href="/post">Titulo do Post</Title>
+    <Title href="/post">{props.title}</Title>
     <PostMeta>
       <span className="post-data">08 de Janeiro de 2020</span>
       <span className="separator">/</span>
@@ -23,15 +22,7 @@ const Post = () => (
       <span className="separator">/</span>
       <span className="post-data">0 Comments</span>
     </PostMeta>
-    <Description>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos, minus
-      ipsum aspernatur facere blanditiis tenetur quas vitae ducimus cupiditate
-      iure, necessitatibus nam, molestiae in repudiandae nisi quod aliquid est
-      error! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos,
-      minus ipsum aspernatur facere blanditiis tenetur quas vitae ducimus
-      cupiditate iure, necessitatibus nam, molestiae in repudiandae nisi quod
-      aliquid est error!
-    </Description>
+    <Description>{props.content}</Description>
     <Button href="/post">Continuar lendo</Button>
   </Container>
 )
