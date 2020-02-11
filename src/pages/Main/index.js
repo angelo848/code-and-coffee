@@ -18,7 +18,7 @@ export default function Main() {
     }
 
     loadPosts()
-  }, [posts])
+  }, [])
 
   return (
     <>

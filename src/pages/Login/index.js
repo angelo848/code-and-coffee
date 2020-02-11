@@ -6,42 +6,75 @@ import {
   faUser,
   faLock
 } from '@fortawesome/free-solid-svg-icons'
+
 import Navbar from '../../components/Navbar'
+import api from '../../services/api'
+import { login } from '../../services/auth'
 
-import { Container, Title, SignButtons, Field, Button } from './styles'
+import { Form, Title, SignButtons, Field, Button } from './styles'
 
-export default function Login() {
-  const [login, setLogin] = useState(true)
+export default function Login(props) {
+  const [name, setName] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [sign, setSign] = useState(true)
 
-  let name = (
+  let Name = (
     <Field>
       <label htmlFor="name">Seu nome completo</label>
       <FontAwesomeIcon icon={faUserCircle} size="lg" />
-      <input type="text" name="name" placeholder="Seu nome" />
+      <input
+        type="text"
+        name="name"
+        placeholder="Seu nome"
+        onChange={e => setName(e.target.value)}
+      />
     </Field>
   )
 
-  let email = (
+  let Email = (
     <Field>
       <label htmlFor="email">Seu melhor email</label>
       <FontAwesomeIcon icon={faEnvelope} size="lg" />
-      <input type="text" name="email" placeholder="E-mail completo" />
+      <input
+        type="text"
+        name="email"
+        placeholder="E-mail completo"
+        onChange={e => setEmail(e.target.value)}
+      />
     </Field>
   )
 
   function handleLoginClick() {
-    setLogin(true)
+    setSign(true)
   }
 
   function handleRegisterClick() {
-    setLogin(false)
+    setSign(false)
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
 
     if (login) {
-      console.log('Logou')
+      if (!username || !password) {
+        alert('Preencha email e/ou senha para continuar!')
+      } else {
+        try {
+          const response = await api.get('/authenticate', {
+            auth: {
+              username: username,
+              password: password
+            }
+          })
+          login(response.data.token)
+          props.history.push('/')
+        } catch (error) {
+          console.log(error)
+          alert('Houve um problema com o login, verifique suas credenciais')
+        }
+      }
     } else {
       console.log('Cadastrou')
     }
@@ -50,41 +83,51 @@ export default function Login() {
   return (
     <>
       <Navbar />
-      {login ? <Title>Entrar</Title> : <Title>Cadastrar</Title>}
-      <Container>
+      {sign ? <Title>Entrar</Title> : <Title>Cadastrar</Title>}
+      <Form onSubmit={handleSubmit}>
         <SignButtons>
           <button
             type="button"
-            className={login ? 'selected' : ''}
+            className={sign ? 'selected' : ''}
             onClick={handleLoginClick}
             style={{ borderRight: '1px solid #fff' }}
           >
-            Login
+            Entrar
           </button>
           <button
             type="button"
-            className={!login ? 'selected' : ''}
+            className={!sign ? 'selected' : ''}
             onClick={handleRegisterClick}
           >
-            Registrar
+            Cadastrar
           </button>
         </SignButtons>
-        {!login && name}
-        {!login && email}
+        {!sign && Name}
+        {!sign && Email}
         <Field>
           <label htmlFor="username">Nome de usuário</label>
           <FontAwesomeIcon icon={faUser} size="lg" />
-          <input type="text" name="username" placeholder="Nome do usuário" />
+          <input
+            type="text"
+            name="username"
+            placeholder="Nome do usuário"
+            onChange={e => setUsername(e.target.value)}
+          />
         </Field>
         <Field>
           <label htmlFor="password">Sua senha secreta</label>
           <FontAwesomeIcon icon={faLock} size="lg" />
-          <input type="password" name="password" placeholder="Senha" />
+          <input
+            type="password"
+            name="password"
+            placeholder="Senha"
+            onChange={e => setPassword(e.target.value)}
+          />
         </Field>
         <Button type="submit" onClick={handleSubmit}>
           {login ? 'Entrar' : 'Cadastrar-se'}
         </Button>
-      </Container>
+      </Form>
     </>
   )
 }

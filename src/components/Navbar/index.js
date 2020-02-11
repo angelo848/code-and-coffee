@@ -1,10 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { isAuthenticated, logout } from "../../services/auth";
+
 import Logo from '../../assets/img/logo.png'
 import { Nav, LogoWrapper, Image } from './styles.js'
 
-export default function() {
+export default function Navbar(props) {
+  function handleLogout(e) {
+    logout()
+  }
+
   return (
     <Nav>
       <LogoWrapper href="/">
@@ -17,9 +23,15 @@ export default function() {
         <Link className="link" to="/sobre">
           Escreva para nós
         </Link>
-        <Link className="link" to="/login">
-          Login
-        </Link>
+        {isAuthenticated() ? (
+          <Link className="link" to="/" onClick={handleLogout}>
+            Logout
+          </Link>
+        ) : (
+            <Link className="link" to="/login">
+              Login
+          </Link>
+          )}
       </div>
     </Nav>
   )
